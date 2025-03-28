@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h2 class="title">{{ propTitle }}</h2>
+    <h2 class="title">
+      <slot></slot>
+    </h2>
   </div>
 </template>
 
