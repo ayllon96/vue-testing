@@ -7,7 +7,7 @@ import TheTitle from './components/TheTitle.vue'
 
 <template>
   <div>
-    <TheTitle />
+    <TheTitle propTitle="Ya en cines, este verano..." />
   </div>
 </template>
 

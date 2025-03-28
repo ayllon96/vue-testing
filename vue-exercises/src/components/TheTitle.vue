@@ -1,14 +1,18 @@
 <template>
   <div>
-    <h2 class="title">Título estático</h2>
+    <h2 class="title">{{ propTitle }}</h2>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps({
+  propTitle: String,
+})
+</script>
 
 <style scoped>
 .title {
-  color: blue;
+  color: rgb(233, 26, 26);
   font-size: 5em;
   text-align: center;
   margin-top: 2em;
