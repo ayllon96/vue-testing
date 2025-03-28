@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+// Supports weights 200-700
+import '@fontsource-variable/oswald'
 </script>
 
 <template>
