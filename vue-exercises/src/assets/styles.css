@@ -1,5 +1,18 @@
-@import 'reset.css';
+:root {
+  --color-primary: #42b983;
+  --color-text: #2c3e50;
+  --color-border: #eaeaea;
+  --section-gap: 160px;
+}
 
 body {
   font-family: 'Oswald Variable', sans-serif;
+  background-color: #f9f9f9;
+  color: var(--color-text);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }

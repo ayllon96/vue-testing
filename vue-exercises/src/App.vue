@@ -3,24 +3,19 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 // Supports weights 200-700
 import '@fontsource-variable/oswald'
+import TheTitle from './components/TheTitle.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div>
+    <TheTitle />
+  </div>
 </template>
+
+<style>
+@import '@/assets/reset.css';
+@import '@/assets/styles.css';
+</style>
 
 <style scoped>
 header {
@@ -79,7 +74,6 @@ nav a:first-of-type {
     text-align: left;
     margin-left: -1rem;
     font-size: 1rem;
-
     padding: 1rem 0;
     margin-top: 1rem;
   }
