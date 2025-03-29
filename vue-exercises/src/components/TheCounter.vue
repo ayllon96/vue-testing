@@ -1,28 +1,35 @@
 <template>
     <div class="counter">
         <TheTitle>{{ title }}</TheTitle>
-        <button @click="increment">Increment</button>
-        <button @click="decrement">Decrement</button>
+        <button @click="increment" v-show="showIncrease">Increase</button>
+        <button @click="decrement" v-show="showDecrease">Decrease</button>
         <p>Count is: {{ count }}</p>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import TheTitle from './TheTitle.vue'
 
-const count = ref(0)
+const count = ref(1)
 const title = 'Counter'
+const showIncrease = ref(true)
+const showDecrease = ref(true) 
+
+watch(count, (newValue) => {
+    showIncrease.value = newValue < 10
+    showDecrease.value = newValue > 0
+})
 
 function increment() {
-    while (count.value < 10) {
-        return count.value++
+    if (count.value < 10) {
+        count.value++
     }
 }
 
 function decrement() {
-    while (count.value > 0) {
-        return count.value--
+    if (count.value > 0) {
+        count.value--
     }
 }
 </script>
@@ -34,18 +41,13 @@ function decrement() {
     align-items: center;
     justify-content: center;
     margin-top: 2em;
-   
 }
 button {
-    display: flex;
     background-color: rgb(233, 26, 26);
     color: white;
     border: none;
-    padding: 0.3em 0.5em;
-    margin: 0.5em 2em;  
-    text-align: center;
-    text-decoration: none;
-    font-size: 1em;
+    padding: 0.5em 1em;
+    margin: 0.5em;
     cursor: pointer;
     border-radius: 0.5em;
 }
