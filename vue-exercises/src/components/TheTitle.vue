@@ -17,6 +17,6 @@ defineProps({
   color: rgb(233, 26, 26);
   font-size: 5em;
   text-align: center;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 </style>
