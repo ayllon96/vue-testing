@@ -27,11 +27,11 @@ export const useCounterStore = defineStore('counter', () => {
 
   watch(count, (newValue) => {
     if (newValue === 0) {
-      title.value = 'Estás en el valor mínimo'
+      title.value = 'You are at the minimum value'
     } else if (newValue === 10) {
-      title.value = 'Estás en el valor máximo'
+      title.value = 'You are at the maximum value'
     } else if (newValue >= 1 && newValue <= 9) {
-      title.value = 'Estás en los parámetros adecuados'
+      title.value = 'You are on rhe right track'
     }
   })
 

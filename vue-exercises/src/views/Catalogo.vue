@@ -14,10 +14,10 @@
     </div>
 
     <div class="catalog__counter">
-      <h2 class="catalog__counter-title">Contador en el Catálogo</h2>
+      <h2 class="catalog__counter-title">Counter on Catalog</h2>
       <div class="counter">
         <TheTitle class="counter__title">{{ title }}</TheTitle>
-        <h2 class="counter__warning" v-show="belowZero">No están permitidos valores negativos</h2>
+        <h2 class="counter__warning" v-show="belowZero">No negative values allowed</h2>
         <div class="counter__actions">
           <button
             class="counter__button counter__button--increase"
@@ -37,9 +37,7 @@
         <h3 class="counter__value" :class="{ 'counter__value--highlight': count >= 10 }">
           Count is: {{ count }}
         </h3>
-        <h3 class="counter__double" v-show="count >= 1">
-          Contador multiplicado por 2: {{ forTwo }}
-        </h3>
+        <h3 class="counter__double" v-show="count >= 1">Counter multiplied by 2: {{ forTwo }}</h3>
       </div>
     </div>
   </div>
