@@ -15,11 +15,6 @@ const router = createRouter({
       name: 'catalog',
       component: CatalogView,
     },
-    {
-      path: 'component_comms',
-      name: 'component_comms',
-      component: () => import('@/views/ComponentComm.vue'),
-    },
   ],
 })
 

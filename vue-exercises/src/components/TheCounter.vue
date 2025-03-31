@@ -11,40 +11,13 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
-import TheTitle from './TheTitle.vue'
+import TheTitle from '@/TheTitle.vue'
+import { useCounterStore } from '@/stores/counterStore'
+import { storeToRefs } from 'pinia'
 
-const count = ref(0)
-const title = ref('Counter')
-
-function increment() {
-  count.value++
-}
-
-function decrement() {
-  count.value--
-}
-
-const belowZero = computed(() => {
-  return count.value < 0
-})
-
-const forTwo = computed(() => {
-  return count.value * 2
-})
-
-const maxValue = computed(() => {
-  return count.value === 10
-})
-
-watch(count, (newValue) => {
-  if (newValue === 0) {
-    title.value = 'Estás en el valor mínimo'
-  } else if (newValue === 10) {
-    title.value = 'Estás en el valor máximo'
-  } else if (newValue >= 1 && newValue <= 9) {
-    title.value = 'Estás en los parámetros adecuados'
-  }
-})
+const counterStore = useCounterStore()
+const { count, title, forTwo, maxValue, belowZero } = storeToRefs(counterStore)
+const { increment, decrement } = counterStore
 </script>
 
 <style scoped>
