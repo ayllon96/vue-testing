@@ -2,7 +2,7 @@
   <div class="counter">
     <TheTitle>{{ title }}</TheTitle>
     <h2 v-show="belowZero">No están permitidos valores negativos</h2>
-    <button @click="increment">Increase</button>
+    <button v-show="!maxValue" @click="increment">Increase</button>
     <button v-show="!belowZero" @click="decrement">Decrease</button>
     <h3 :style="{ color: count >= 10 ? 'green' : 'black' }">Count is: {{ count }}</h3>
     <h3 v-show="count >= 1">Contador multiplicado por 2: {{ forTwo }}</h3>
@@ -10,11 +10,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import TheTitle from './TheTitle.vue'
 
 const count = ref(0)
-const title = 'Counter'
+const title = ref('Counter')
 
 function increment() {
   count.value++
@@ -30,6 +30,20 @@ const belowZero = computed(() => {
 
 const forTwo = computed(() => {
   return count.value * 2
+})
+
+const maxValue = computed(() => {
+  return count.value === 10
+})
+
+watch(count, (newValue) => {
+  if (newValue === 0) {
+    title.value = 'Estás en el valor mínimo'
+  } else if (newValue === 10) {
+    title.value = 'Estás en el valor máximo'
+  } else if (newValue >= 1 && newValue <= 9) {
+    title.value = 'Estás en los parámetros adecuados'
+  }
 })
 </script>
 
