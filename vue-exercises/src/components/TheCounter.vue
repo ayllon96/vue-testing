@@ -1,31 +1,20 @@
 <template>
   <div class="counter">
     <TheTitle>{{ title }}</TheTitle>
-    <h2 v-show="belowZero">No están permitidos valores negativos</h2>
-    <button @click="increment">Increase</button>
-    <button v-show="!belowZero" @click="decrement">Decrease</button>
-    <p :style="{ color: count >= 10 ? 'green' : 'black' }">Count is: {{ count }}</p>
+    <button @click="increment" v-show="showIncrease">Increase</button>
+    <button @click="decrement" v-show="showDecrease">Decrease</button>
+    <p>Count is: {{ count + 1 }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, watch } from 'vue'
 import TheTitle from './TheTitle.vue'
 
 const count = ref(0)
 const title = 'Counter'
 
-function increment() {
-  count.value++
-}
-
-function decrement() {
-  count.value--
-}
-
-const belowZero = computed(() => {
-  return count.value < 0
-})
+const { count, showIncrease, showDecrease, increment, decrement, reset } = useCounter(5, 10, 0)
 </script>
 
 <style scoped>
@@ -36,7 +25,6 @@ const belowZero = computed(() => {
   justify-content: center;
   margin-top: 2em;
 }
-
 button {
   background-color: rgb(233, 26, 26);
   color: white;
