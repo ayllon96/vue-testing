@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
-import TheTitle from '@/TheTitle.vue'
+import TheTitle from './TheTitle.vue'
 import { useCounterStore } from '@/stores/counterStore'
 import { storeToRefs } from 'pinia'
 

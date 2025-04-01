@@ -1,3 +1,20 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import ProductCard from '@/components/ProductCard.vue'
+import TheTitle from '@/components/TheTitle.vue'
+import { products } from '@/data/mock'
+import { useCounterStore } from '@/stores/counterStore'
+import { storeToRefs } from 'pinia'
+
+const counterStore = useCounterStore()
+const { count, title, forTwo, maxValue, belowZero } = storeToRefs(counterStore)
+const { increment, decrement } = counterStore
+
+const addToCart = (product: any) => {
+  alert(`Added ${product.title} to cart!`)
+}
+</script>
+
 <template>
   <div class="catalog">
     <h1 class="catalog__title">Our Products</h1>
@@ -43,28 +60,13 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
-import ProductCard from '@/components/ProductCard.vue'
-import TheTitle from '@/components/TheTitle.vue'
-import { products } from '@/data/mock'
-import { useCounterStore } from '@/stores/counterStore'
-import { storeToRefs } from 'pinia'
-
-const counterStore = useCounterStore()
-const { count, title, forTwo, maxValue, belowZero } = storeToRefs(counterStore)
-const { increment, decrement } = counterStore
-
-const addToCart = (product: any) => {
-  alert(`Added ${product.title} to cart!`)
-}
-</script>
-
 <style scoped lang="scss">
-$primary-color: #2c3e50;
-$secondary-color: #42b983;
-$light-color: #f0f0f0;
-$warning-color: #ff4757;
+$colors: (
+  primary: #2c3e50,
+  secondary: #42b983,
+  light: #f0f0f0,
+  warning: #ff4757,
+);
 
 .catalog {
   padding: 1.25rem;
@@ -73,7 +75,7 @@ $warning-color: #ff4757;
 
   &__title {
     text-align: center;
-    color: $primary-color;
+    color: map-get($colors, primary);
     margin-bottom: 1.25rem;
     font-size: 1.75rem;
   }
@@ -82,14 +84,14 @@ $warning-color: #ff4757;
     display: inline-block;
     margin-bottom: 1.25rem;
     padding: 0.5rem 1rem;
-    background: $light-color;
-    color: $primary-color;
+    background: map-get($colors, light);
+    color: map-get($colors, primary);
     text-decoration: none;
     border-radius: 0.25rem;
     transition: background 0.2s ease;
 
     &:hover {
-      background: $light-color, 10%;
+      background: map-get($colors, light);
     }
   }
 
@@ -120,7 +122,7 @@ $warning-color: #ff4757;
   }
 
   &__warning {
-    color: $warning-color;
+    color: map-get($colors, warning);
     margin: 0.5rem 0;
   }
 
@@ -140,18 +142,18 @@ $warning-color: #ff4757;
     transition: background 0.2s ease;
 
     &--increase {
-      background: $primary-color;
+      background: map-get($colors, primary);
 
       &:hover {
-        background: $secondary-color;
+        background: map-get($colors, secondary);
       }
     }
 
     &--decrease {
-      background: $primary-color;
+      background: map-get($colors, primary);
 
       &:hover {
-        background: $primary-color, 10%;
+        background: map-get($colors, secondary);
       }
     }
   }
@@ -160,13 +162,13 @@ $warning-color: #ff4757;
     margin: 0.5rem 0;
 
     &--highlight {
-      color: $secondary-color;
+      color: map-get($colors, secondary);
     }
   }
 
   &__double {
     margin: 0.5rem 0;
-    color: $primary-color;
+    color: map-get($colors, primary);
   }
 }
 </style>
